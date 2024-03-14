@@ -1,8 +1,15 @@
 package com.application.steps;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
 import com.application.elements.RegistrationPageElements;
 
 public class RegistrationPageSteps extends  RegistrationPageElements{
+	
+	public RegistrationPageSteps(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
 	
 	public void verifyRegistrationPageIsLaunched() {
 		waitForElement(registrationPageHeader, 10);

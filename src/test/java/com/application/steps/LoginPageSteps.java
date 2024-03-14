@@ -1,10 +1,16 @@
 package com.application.steps;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.application.elements.LoginPageElements;
 
 public class LoginPageSteps extends LoginPageElements{
+	
+	public LoginPageSteps(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
 	
 	public void launchApplication() {
 		launchApplication(prop.getProperty("url"));
@@ -13,6 +19,7 @@ public class LoginPageSteps extends LoginPageElements{
 	public void verifyApplicationIsLaunchedSuccessfully() {
 		Assert.assertEquals(getTitle(), prop.getProperty("title"));
 		log("info","Application launched Successfully");
+		wait(2);
 	}
 	
 	public void verifyLogo() {
